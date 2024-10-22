@@ -1,5 +1,7 @@
 package h02;
 
+import fopbot.Direction;
+import fopbot.Robot;
 import fopbot.RobotFamily;
 import fopbot.World;
 import h02.template.InputHandler;
@@ -68,7 +70,10 @@ public class FourWins {
     @StudentImplementationRequired("H2.2.1")
     public static boolean validateInput(final int column, final RobotFamily[][] stones) {
         // TODO: H2.2.1
-        return org.tudalgo.algoutils.student.Student.crash("H2.2.1 - Remove if implemented");
+        if(column >= 0 && column < World.getWidth()) {
+            return stones[0][column] == null;
+        }
+            return false;
     }
 
 
@@ -84,7 +89,12 @@ public class FourWins {
     @StudentImplementationRequired("H2.2.2")
     public static int getDestinationRow(final int column, final RobotFamily[][] stones) {
         // TODO: H2.2.2
-        return org.tudalgo.algoutils.student.Student.crash("H2.2.2 - Remove if implemented");
+        for(int i = stones.length-1; i >= 0 ; i--){
+            if(stones[i][column] == null){
+                return i;
+            }
+        }
+        return -1;
     }
 
     /**
@@ -103,7 +113,14 @@ public class FourWins {
     @StudentImplementationRequired("H2.2.2")
     public static void dropStone(final int column, final RobotFamily[][] stones, final RobotFamily currentPlayer) {
         // TODO: H2.2.2
-        org.tudalgo.algoutils.student.Student.crash("H2.2.2 - Remove if implemented");
+        Robot robot = new Robot(column, 0, Direction.DOWN, 0, currentPlayer);
+        int destination = getDestinationRow(column,stones);
+
+        for(int i = 0; i < destination; i++){
+            robot.move();
+        }
+        robot.turnLeft();
+        robot.turnLeft();
     }
 
 
@@ -133,7 +150,24 @@ public class FourWins {
     @StudentImplementationRequired("H2.2.3")
     public static boolean testWinHorizontal(final RobotFamily[][] stones, final RobotFamily currentPlayer) {
         // TODO: H2.2.3
-        return org.tudalgo.algoutils.student.Student.crash("H2.2.3 - Remove if implemented");
+
+        //nochmal bearbeiten
+
+        int counter = 0;
+
+        for(int i = stones.length-1; i >= 0; i--){
+            for(int j = 0; j <= stones[i].length-1; j++){
+                if(stones[i][j] == currentPlayer){
+                    counter++;
+                    if(counter == 4){
+                        return true;
+                    }
+                }else{
+                    counter=0;
+                }
+            }
+        }
+        return false;
     }
 
     /**
@@ -147,7 +181,24 @@ public class FourWins {
     @StudentImplementationRequired("H2.2.3")
     public static boolean testWinVertical(final RobotFamily[][] stones, final RobotFamily currentPlayer) {
         // TODO: H2.2.3
-        return org.tudalgo.algoutils.student.Student.crash("H2.2.3 - Remove if implemented");
+
+        // nochmal bearbeiten
+
+        int counter = 0;
+
+        for(int i = stones.length-1; i >= 0; i--){
+            for(int j = 0; j <= stones[i].length-1; j++){
+                if(stones[i][j] == currentPlayer){
+                    counter++;
+                    if(counter == 4){
+                        return true;
+                    }
+                }else{
+                    counter=0;
+                }
+            }
+        }
+        return false;
     }
 
     /**

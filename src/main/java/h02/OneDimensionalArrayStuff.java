@@ -1,9 +1,9 @@
 package h02;
 
-import org.tudalgo.algoutils.student.Student;
+
 import org.tudalgo.algoutils.student.annotation.StudentImplementationRequired;
 
-import java.util.Arrays;
+
 
 /**
  * This class serves as a container for the methods that are to be implemented by the students for exercise H2.1.1.
@@ -67,6 +67,17 @@ public class OneDimensionalArrayStuff {
     @StudentImplementationRequired("H2.1.1")
     public static int fibonacci(final int n) {
         // TODO: H2.1.1
-        return 0;
+        int[] array = new int[2];
+        array[0] = 0;
+        array[1]= 1;
+
+        if(n < array.length){
+            return array[n];
+        }else{
+            for(int i = 0; i < n - array.length; i++){
+                array = calculateNextFibonacci(array);
+            }
+            return array[n];
+        }
     }
 }

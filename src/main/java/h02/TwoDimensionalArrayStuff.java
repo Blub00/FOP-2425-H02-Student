@@ -27,7 +27,18 @@ public class TwoDimensionalArrayStuff {
     @StudentImplementationRequired("H2.1.2")
     public static int[] occurrences(final String[][] input, final String query) {
         // TODO: H2.1.2
-        return org.tudalgo.algoutils.student.Student.crash("H2.1.2 - Remove if implemented");
+        int[] counter = new int[input.length];
+
+        for(int i = 0; i < input.length; i++){
+            int counted =0;
+            for(int j = 0; j < input[i].length; j++){
+                if(input[i][j].equals(query)){
+                    counted++;
+                    counter[i] = counted;
+                }
+            }
+        }
+        return counter;
     }
 
     /**
@@ -39,7 +50,12 @@ public class TwoDimensionalArrayStuff {
     @StudentImplementationRequired("H2.1.2")
     public static float mean(final int[] input) {
         // TODO: H2.1.2
-        return org.tudalgo.algoutils.student.Student.crash("H2.1.2 - Remove if implemented");
+        int helper = 0;
+
+        for(int i = 0; i < input.length; i++){
+            helper = input[i] + helper;
+        }
+        return (float) helper /input.length;
     }
 
     /**
