@@ -1,6 +1,9 @@
 package h02;
 
+import org.tudalgo.algoutils.student.Student;
 import org.tudalgo.algoutils.student.annotation.StudentImplementationRequired;
+
+import java.util.Arrays;
 
 /**
  * This class serves as a container for the methods that are to be implemented by the students for exercise H2.1.1.
@@ -25,7 +28,14 @@ public class OneDimensionalArrayStuff {
     @StudentImplementationRequired("H2.1.1")
     public static int[] push(final int[] array, final int value) {
         // TODO: H2.1.1
-        return org.tudalgo.algoutils.student.Student.crash("H2.1.1 - Remove if implemented");
+        int[] secondArray = new int[array.length + 1];
+
+        for(int i = 0; i < array.length; i++){
+            secondArray[i] = array[i];
+        }
+        secondArray[secondArray.length-1] = value;
+
+        return secondArray;
     }
 
     /**
@@ -38,7 +48,14 @@ public class OneDimensionalArrayStuff {
     @StudentImplementationRequired("H2.1.1")
     public static int[] calculateNextFibonacci(final int[] array) {
         // TODO: H2.1.1
-        return org.tudalgo.algoutils.student.Student.crash("H2.1.1 - Remove if implemented");
+        int nextFibonacci;
+
+        int firstNumber = array[array.length-2];
+        int secondNumber = array[array.length-1];
+
+        nextFibonacci = firstNumber + secondNumber;
+
+        return push(array, nextFibonacci);
     }
 
     /**
@@ -50,6 +67,6 @@ public class OneDimensionalArrayStuff {
     @StudentImplementationRequired("H2.1.1")
     public static int fibonacci(final int n) {
         // TODO: H2.1.1
-        return org.tudalgo.algoutils.student.Student.crash("H2.1.1 - Remove if implemented");
+        return 0;
     }
 }
